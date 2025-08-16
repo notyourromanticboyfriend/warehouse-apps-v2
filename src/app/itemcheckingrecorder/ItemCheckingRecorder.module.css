@@ -1,0 +1,233 @@
+/* ItemCheckingRecorder.module.css */
+.container {
+  height: 100%; /* Changed from 100vh */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+.header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  position: static;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.recordingStatus {
+  display: flex;
+  align-items: center;
+}
+
+.recordingIndicator {
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recordingDot {
+  color: white;
+  font-size: 1rem;
+  animation: pulse 1.5s infinite;
+}
+
+.pausedIndicator {
+  background-color: #f39c12;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pausedIcon {
+  font-size: 1rem;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.mainLayout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.formSection {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 200px;
+  background-color: white;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.videoSection {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  background-color: #222;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.videoWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 0;
+  position: relative;
+}
+
+.videoFeed {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.formGroup {
+  margin-bottom: 1.2rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.inputField:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.inputField:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.controls {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.recordButton, .stopButton, .pauseButton, .resumeButton {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recordButton {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.recordButton:hover:not(:disabled) {
+  background-color: #27ae60;
+}
+
+.recordButton:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.stopButton {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.stopButton:hover {
+  background-color: #c0392b;
+}
+
+.pauseButton {
+  background-color: #f39c12;
+  color: white;
+}
+
+.pauseButton:hover {
+  background-color: #e67e22;
+}
+
+.resumeButton {
+  background-color: #3498db;
+  color: white;
+}
+
+.resumeButton:hover {
+  background-color: #2980b9;
+}
+
+.cameraError {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.errorIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error {
+  border-color: #ff4444 !important;
+}
+
+.errorMessage {
+  color: #ff4444;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}

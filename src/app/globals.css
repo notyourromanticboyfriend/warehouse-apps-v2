@@ -1,0 +1,125 @@
+/*app/global.css*/
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+:root {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+/* Mobile sidebar toggle */
+#sidebar-toggle:checked ~ .sidebar {
+  transform: translateX(0);
+}
+
+#sidebar-toggle:checked ~ main .sidebar-overlay {
+  display: block;
+}
+
+#sidebar-toggle:checked ~ main::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 30;
+}
+
+/* Hide overlay on desktop */
+@media (min-width: 1024px) {
+  #sidebar-toggle:checked ~ main .sidebar-overlay {
+    display: none;
+  }
+}
+
+/* Add to global.css */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0; /* Start invisible */
+}
+
+/* Mobile sidebar fixes */
+@media (max-width: 1023px) {
+  #sidebar-toggle:checked ~ .sidebar {
+    transform: translateX(0);
+  }
+  
+  #sidebar-toggle:checked ~ main {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    height: 100%;
+  }
+  
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 35;
+  }
+  
+  #sidebar-toggle:checked ~ main .sidebar-overlay {
+    display: block;
+  }
+  
+  .sidebar {
+    top: 0; /* Full height including behind header */
+    height: 100vh;
+    padding-top: 4rem; /* Space for header */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+}
+
+/* Ensure header stays on top */
+.header {
+  z-index: 50;
+}
+
+/* Add safe area for mobile notches */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  .sidebar {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-left);
+  }
+}

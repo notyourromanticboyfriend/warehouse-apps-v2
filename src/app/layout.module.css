@@ -1,0 +1,179 @@
+/* Layout styles */
+.body {
+  padding-top: 60px;
+  box-sizing: border-box;  /* ensure padding doesn't break your layout width */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #f5f5f5;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0 16px;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.headerTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notificationButton {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.notificationButton:hover {
+  color: #bfdbfe;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.userAvatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #60a5fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.userName {
+  font-size: 14px;
+}
+
+.mainContainer {
+  display: flex;
+  margin-top: 60px; /* Header height */
+  min-height: calc(100vh - 60px);
+}
+
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 224px;
+  background-color: #1d4ed8;
+  color: white;
+  padding: 16px;
+  z-index: 900;
+  overflow-y: auto;
+}
+
+.sidebarHeader {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #2563eb;
+}
+
+.sidebarTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.navLink:hover {
+  background-color: #2563eb;
+}
+
+.navText {
+  margin-left: 8px;
+}
+
+.sidebarFooter {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #2563eb;
+}
+
+.sidebarSubtitle {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.sidebarMenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mainContent {
+  flex: 1;
+  margin-left: 224px; /* Sidebar width */
+  padding: 16px;
+  background-color: white;
+  min-height: calc(100vh - 60px);
+}
+/* 1) globally include padding/border in width/height calculations */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2) prevent inner components from overflowing the white panel */
+.mainContent {
+  overflow: auto;        /* show scrollbars if content is too big */
+  /* optionally restrict width to sidebar + content: */
+  max-width: calc(100% - 224px);
+}
+
+/* also on the overall two-column wrapper */
+.mainContainer {
+  overflow: hidden;      /* clip any out-of-bounds children */
+}
